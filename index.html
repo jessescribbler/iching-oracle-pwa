@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101b24" />
+    <meta name="description" content="A quiet, installable I Ching oracle and reading journal." />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/icon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Book of Changes</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <button class="brand" data-view="oracle" aria-label="Open oracle">
+          <span class="brand-mark" aria-hidden="true">☰</span>
+          <span>Book of Changes</span>
+        </button>
+        <button id="installButton" class="install-button" hidden>Install</button>
+      </header>
+
+      <main>
+        <section id="oracleView" class="view active">
+          <div class="oracle-intro">
+            <h1>What would you like to reflect on?</h1>
+            <p>Hold a sincere question in mind. The reading is a mirror for reflection, not a command.</p>
+          </div>
+
+          <form id="castForm" class="cast-form">
+            <label for="question">Your question</label>
+            <textarea id="question" rows="3" placeholder="Write it here, or leave this space quiet."></textarea>
+            <button class="primary-button" type="submit">Cast the coins</button>
+          </form>
+
+          <section id="reading" class="reading" hidden aria-live="polite">
+            <div class="reading-header">
+              <div>
+                <p class="section-label">Your reading</p>
+                <h2 id="readingQuestion">A moment for reflection</h2>
+              </div>
+              <button id="saveReading" class="text-button" type="button">Save to journal</button>
+            </div>
+
+            <div class="hexagram-pair">
+              <article class="hexagram-card primary">
+                <p class="hexagram-role">Primary hexagram</p>
+                <div id="primaryLines" class="hexagram-lines" aria-label="Primary hexagram"></div>
+                <div class="hexagram-title">
+                  <span id="primarySymbol" class="hexagram-symbol"></span>
+                  <div>
+                    <h3 id="primaryName"></h3>
+                    <p id="primaryNumber"></p>
+                  </div>
+                </div>
+              </article>
+
+              <div class="changes-arrow" aria-hidden="true">→</div>
+
+              <article class="hexagram-card relating">
+                <p class="hexagram-role">Relating hexagram</p>
+                <div id="relatingLines" class="hexagram-lines" aria-label="Relating hexagram"></div>
+                <div class="hexagram-title">
+                  <span id="relatingSymbol" class="hexagram-symbol"></span>
+                  <div>
+                    <h3 id="relatingName"></h3>
+                    <p id="relatingNumber"></p>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="interpretation">
+              <p class="section-label">Reflection</p>
+              <p id="guidance"></p>
+              <div id="changingLines" class="changing-lines"></div>
+            </div>
+
+            <details class="method-notes">
+              <summary>How this cast was made</summary>
+              <p>Each line uses three simulated coins. Heads count as 3 and tails as 2. Totals of 6 and 9 are changing lines.</p>
+              <ol id="coinDetails"></ol>
+            </details>
+          </section>
+        </section>
+
+        <section id="journalView" class="view">
+          <div class="page-heading">
+            <p class="section-label">Saved readings</p>
+            <h1>Journal</h1>
+            <p>Your readings stay on this device.</p>
+          </div>
+          <div id="journalList" class="journal-list"></div>
+        </section>
+
+        <section id="aboutView" class="view">
+          <div class="page-heading">
+            <p class="section-label">Sources and approach</p>
+            <h1>About this oracle</h1>
+          </div>
+          <div class="about-copy">
+            <p>The I Ching, or Book of Changes, is an ancient Chinese work used for reflection on change, timing, and conduct.</p>
+            <p>This app uses the traditional King Wen sequence, hexagram structure, and three-coin casting method. Its short reflections are original app text rather than a claim to replace a full translation.</p>
+            <h2>Public-domain foundation</h2>
+            <p>For deeper reading, consult James Legge’s 1882 English translation and the original Chinese text. Both are public domain in the United States.</p>
+            <a href="https://www.gutenberg.org/ebooks/25501" target="_blank" rel="noreferrer">Project Gutenberg: Chinese Yi Jing</a>
+            <a href="https://commons.wikimedia.org/wiki/File:The_Sacred_Books_Of_The_East_%28IA_sacredbooksofthe015784mbp%29.pdf" target="_blank" rel="noreferrer">James Legge scan: Sacred Books of the East</a>
+            <h2>A note on use</h2>
+            <p>Treat a reading as a perspective to consider. For health, legal, financial, or safety decisions, seek qualified advice and use your own judgment.</p>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Primary navigation">
+        <button class="nav-button active" data-view="oracle"><span aria-hidden="true">☰</span>Oracle</button>
+        <button class="nav-button" data-view="journal"><span aria-hidden="true">□</span>Journal</button>
+        <button class="nav-button" data-view="about"><span aria-hidden="true">○</span>About</button>
+      </nav>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>

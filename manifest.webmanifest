@@ -1,0 +1,17 @@
+{
+  "name": "Book of Changes",
+  "short_name": "Changes",
+  "description": "A quiet I Ching oracle and reading journal.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#101b24",
+  "theme_color": "#101b24",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
