@@ -6,9 +6,10 @@ An installable, offline-capable I Ching oracle and private reading journal.
 
 - Six-step, bottom-up three-coin casting flow
 - Primary and relating hexagrams with standard moving-line notation
-- Recovery Cottage interpretive rendering for all 64 hexagrams
-- Recovery Cottage reflections and all 384 line-position reflections
-- Separate links to James Legge's public-domain translation and the Chinese text
+- Distinct Recovery Cottage recovery themes and reflections for all 64 hexagrams
+- Source-grounded plain-language moving-line lenses
+- In-app James Legge judgments, Images, and changing-line text
+- Separate public-domain source links for Legge and the Chinese text
 - Shareable casts using `?lines=` URLs without sharing private questions or notes
 - On-device journal with personal notes and reopenable readings
 - Offline app shell and Android-friendly PWA icons
@@ -43,5 +44,6 @@ Open that address in Chrome on Android, tap Chrome's menu, then choose
 Public-domain references:
 
 - https://www.gutenberg.org/ebooks/25501
-- https://commons.wikimedia.org/wiki/File:The_Sacred_Books_Of_The_East_%28IA_sacredbooksofthe015784mbp%29.pdf
+- https://archive.org/details/sacredbooksofchi16conf
+- https://sacred-texts.com/ich/ictoc.htm
 - https://ctext.org/book-of-changes/yi-jing

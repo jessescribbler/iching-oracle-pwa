@@ -1,8 +1,9 @@
-const CACHE = "recovery-cottage-v2";
+const CACHE = "recovery-cottage-v3";
 const ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
+  "./legge.js",
   "./app.js",
   "./manifest.webmanifest",
   "./assets/icon.svg",

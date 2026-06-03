@@ -97,7 +97,7 @@
                 <blockquote id="recoveryOracle"></blockquote>
               </article>
               <article class="interpretation">
-                <p class="section-label">Image</p>
+                <p class="section-label">Cottage lens</p>
                 <p id="recoveryImage"></p>
               </article>
               <article class="interpretation">
@@ -114,9 +114,21 @@
             <div id="leggePanel" class="reading-panel">
               <article class="oracle-text">
                 <p class="section-label">Public-domain historical source</p>
-                <h3>James Legge’s 1882 translation</h3>
-                <p>Legge’s full translation is available as a public-domain scan. Recovery Cottage keeps this source separate from its own original rendering.</p>
-                <a id="leggeSourceLink" class="source-button" href="https://commons.wikimedia.org/wiki/File:The_Sacred_Books_Of_The_East_%28IA_sacredbooksofthe015784mbp%29.pdf" target="_blank" rel="noreferrer">Open the Legge scan</a>
+                <h3 id="leggeTitle">James Legge’s 1882 translation</h3>
+                <p class="section-label">Judgment</p>
+                <blockquote id="leggeJudgment"></blockquote>
+              </article>
+              <article class="interpretation">
+                <p class="section-label">Image</p>
+                <p id="leggeImage"></p>
+              </article>
+              <section id="leggeChangingLinesSection" class="changing-lines-section">
+                <p class="section-label">Changing lines in Legge</p>
+                <div id="leggeChangingLines" class="changing-lines"></div>
+              </section>
+              <article class="interpretation">
+                <p>Recovery Cottage keeps this public-domain historical translation separate from its own original interpretive writing.</p>
+                <a id="leggeSourceLink" class="source-button" href="https://archive.org/details/sacredbooksofchi16conf" target="_blank" rel="noreferrer">Open Sacred Books of the East, Vol. XVI</a>
                 <a id="chineseSourceLink" class="source-button secondary" href="https://ctext.org/book-of-changes/yi-jing" target="_blank" rel="noreferrer">Open Chinese Text Project comparison</a>
               </article>
             </div>
@@ -151,12 +163,12 @@
           </div>
           <div class="about-copy">
             <p>The I Ching, or Book of Changes, is an ancient Chinese work used for reflection on change, timing, relationship, and conduct.</p>
-            <p><strong>Recovery Cottage</strong> is an original interpretive rendering inspired by the traditional King Wen sequence, the ancient Chinese text, and James Legge’s public-domain translation. It is not presented as a philological or official translation.</p>
+            <p><strong>Recovery Cottage</strong> is original interpretive writing inspired by the traditional King Wen sequence, the ancient Chinese text, and James Legge’s public-domain translation. It is not presented as a philological or official translation.</p>
             <p>The Recovery Cottage reflections bring the oracle into conversation with recovery, grief, boundaries, accountability, patience, repair, and the slow work of becoming more whole.</p>
             <h2>Public-domain foundation</h2>
             <p>James Legge’s 1882 English translation and the original Chinese text are public domain in the United States. Modern translations and commentary remain the work of their authors and are not copied here.</p>
             <a href="https://www.gutenberg.org/ebooks/25501" target="_blank" rel="noreferrer">Project Gutenberg: Chinese Yi Jing</a>
-            <a href="https://commons.wikimedia.org/wiki/File:The_Sacred_Books_Of_The_East_%28IA_sacredbooksofthe015784mbp%29.pdf" target="_blank" rel="noreferrer">James Legge scan: Sacred Books of the East</a>
+            <a href="https://archive.org/details/sacredbooksofchi16conf" target="_blank" rel="noreferrer">James Legge: Sacred Books of the East, Vol. XVI</a>
             <a href="https://ctext.org/book-of-changes/yi-jing" target="_blank" rel="noreferrer">Chinese Text Project: Chinese and Legge comparison</a>
             <h2>A note on use</h2>
             <p>Treat a reading as a perspective to consider. For health, legal, financial, or safety decisions, seek qualified advice and use your own judgment.</p>
@@ -170,6 +182,7 @@
         <button class="nav-button" data-view="about"><span aria-hidden="true">○</span>About</button>
       </nav>
     </div>
+    <script src="./legge.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>
