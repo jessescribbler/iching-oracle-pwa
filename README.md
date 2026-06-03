@@ -1,10 +1,19 @@
-# Book of Changes PWA
+# Recovery Cottage | Book of Changes
 
-An installable, offline-capable I Ching oracle for reflection and journaling.
+An installable, offline-capable I Ching oracle and private reading journal.
+
+## Features
+
+- Six-step, bottom-up three-coin casting flow
+- Primary and relating hexagrams with standard moving-line notation
+- Recovery Cottage interpretive rendering for all 64 hexagrams
+- Recovery Cottage reflections and all 384 line-position reflections
+- Separate links to James Legge's public-domain translation and the Chinese text
+- Shareable casts using `?lines=` URLs without sharing private questions or notes
+- On-device journal with personal notes and reopenable readings
+- Offline app shell and Android-friendly PWA icons
 
 ## Run locally
-
-From this folder:
 
 ```powershell
 python -m http.server 4173 --bind 127.0.0.1
@@ -12,30 +21,27 @@ python -m http.server 4173 --bind 127.0.0.1
 
 Then open `http://127.0.0.1:4173`.
 
-## Put it on an Android phone
+## Install on Android
 
-A PWA must be hosted over HTTPS before Android will offer normal installation.
+The published GitHub Pages app is available at:
 
-The simplest deployment options are:
+https://jessescribbler.github.io/iching-oracle-pwa/
 
-1. Create a free GitHub repository and upload this folder.
-2. Connect the repository to Cloudflare Pages, Netlify, or Vercel.
-3. Open the resulting HTTPS address in Chrome on Android.
-4. Tap Chrome's menu, then **Add to Home screen** or **Install app**.
-
-After the first visit, the app shell works offline. Saved journal entries remain
-in that phone's browser storage and are not synced to another device.
+Open that address in Chrome on Android, tap Chrome's menu, then choose
+**Install app** or **Add to Home screen**.
 
 ## Sources and copyright
 
 - The traditional King Wen hexagram sequence, hexagram structure, and original
   Chinese text are public-domain material.
 - James Legge's 1882 English translation is public domain in the United States.
-- The short reflection text in `app.js` was written specifically for this app.
-- Do not copy modern translations or a modern website's transcription,
-  commentary, formatting, or illustrations without checking their license.
+- Recovery Cottage is original interpretive writing inspired by those sources.
+  It is not presented as a philological or official translation.
+- Do not copy modern translations, commentary, formatting, or illustrations
+  without checking their license.
 
 Public-domain references:
 
 - https://www.gutenberg.org/ebooks/25501
 - https://commons.wikimedia.org/wiki/File:The_Sacred_Books_Of_The_East_%28IA_sacredbooksofthe015784mbp%29.pdf
+- https://ctext.org/book-of-changes/yi-jing

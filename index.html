@@ -4,43 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#101b24" />
-    <meta name="description" content="A quiet, installable I Ching oracle and reading journal." />
+    <meta name="description" content="Recovery Cottage: a quiet, installable I Ching oracle and reading journal." />
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="./assets/icon.svg" />
+    <link rel="apple-touch-icon" href="./assets/icon-192.png" />
     <link rel="stylesheet" href="./styles.css" />
-    <title>Book of Changes</title>
+    <title>Recovery Cottage | Book of Changes</title>
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
         <button class="brand" data-view="oracle" aria-label="Open oracle">
           <span class="brand-mark" aria-hidden="true">☰</span>
-          <span>Book of Changes</span>
+          <span>Recovery Cottage</span>
         </button>
         <button id="installButton" class="install-button" hidden>Install</button>
       </header>
 
       <main>
         <section id="oracleView" class="view active">
-          <div class="oracle-intro">
+          <div id="oracleIntro" class="oracle-intro">
+            <p class="section-label">Book of Changes</p>
             <h1>What would you like to reflect on?</h1>
-            <p>Hold a sincere question in mind. The reading is a mirror for reflection, not a command.</p>
+            <p>Hold a sincere question in mind. A reading is a mirror for reflection, not a command.</p>
           </div>
 
           <form id="castForm" class="cast-form">
             <label for="question">Your question</label>
-            <textarea id="question" rows="3" placeholder="Write it here, or leave this space quiet."></textarea>
-            <button class="primary-button" type="submit">Cast the coins</button>
+            <textarea id="question" rows="3" maxlength="280" placeholder="Write it here, or leave this space quiet."></textarea>
+            <button class="primary-button" type="submit">Begin a reading</button>
           </form>
+
+          <section id="castingStage" class="casting-stage" hidden aria-live="polite">
+            <div class="casting-copy">
+              <p id="castProgress" class="section-label">Line 1 of 6</p>
+              <h2 id="castPrompt">Return to your question.</h2>
+              <p id="castSubtext">When you are ready, cast the first line. The hexagram is built from the bottom upward.</p>
+            </div>
+            <div id="castingLines" class="casting-lines" aria-label="Hexagram being cast"></div>
+            <div id="lastCast" class="last-cast" hidden></div>
+            <button id="castLineButton" class="primary-button cast-line-button" type="button">Cast line 1</button>
+            <button id="cancelCast" class="quiet-button" type="button">Start over</button>
+          </section>
 
           <section id="reading" class="reading" hidden aria-live="polite">
             <div class="reading-header">
               <div>
-                <p class="section-label">Your reading</p>
+                <p id="readingNotation" class="section-label">Your reading</p>
                 <h2 id="readingQuestion">A moment for reflection</h2>
               </div>
-              <button id="saveReading" class="text-button" type="button">Save to journal</button>
+              <div class="reading-actions">
+                <button id="shareReading" class="text-button" type="button">Share</button>
+                <button id="saveReading" class="text-button" type="button">Save</button>
+              </div>
             </div>
 
             <div class="hexagram-pair">
@@ -55,9 +71,7 @@
                   </div>
                 </div>
               </article>
-
               <div class="changes-arrow" aria-hidden="true">→</div>
-
               <article class="hexagram-card relating">
                 <p class="hexagram-role">Relating hexagram</p>
                 <div id="relatingLines" class="hexagram-lines" aria-label="Relating hexagram"></div>
@@ -71,17 +85,53 @@
               </article>
             </div>
 
-            <div class="interpretation">
-              <p class="section-label">Reflection</p>
-              <p id="guidance"></p>
-              <div id="changingLines" class="changing-lines"></div>
+            <div class="reading-tabs" role="tablist" aria-label="Reading text">
+              <button class="reading-tab active" data-reading-tab="recovery" type="button">Recovery Cottage</button>
+              <button class="reading-tab" data-reading-tab="legge" type="button">James Legge</button>
             </div>
+
+            <div id="recoveryPanel" class="reading-panel active">
+              <article class="oracle-text">
+                <p class="section-label">Recovery Cottage interpretive rendering</p>
+                <h3 id="recoveryTitle"></h3>
+                <blockquote id="recoveryOracle"></blockquote>
+              </article>
+              <article class="interpretation">
+                <p class="section-label">Image</p>
+                <p id="recoveryImage"></p>
+              </article>
+              <article class="interpretation">
+                <p class="section-label">Reflection</p>
+                <p id="recoveryReflection"></p>
+                <div id="reflectionQuestions" class="reflection-questions"></div>
+              </article>
+              <section id="changingLinesSection" class="changing-lines-section">
+                <p class="section-label">Changing lines</p>
+                <div id="changingLines" class="changing-lines"></div>
+              </section>
+            </div>
+
+            <div id="leggePanel" class="reading-panel">
+              <article class="oracle-text">
+                <p class="section-label">Public-domain historical source</p>
+                <h3>James Legge’s 1882 translation</h3>
+                <p>Legge’s full translation is available as a public-domain scan. Recovery Cottage keeps this source separate from its own original rendering.</p>
+                <a id="leggeSourceLink" class="source-button" href="https://commons.wikimedia.org/wiki/File:The_Sacred_Books_Of_The_East_%28IA_sacredbooksofthe015784mbp%29.pdf" target="_blank" rel="noreferrer">Open the Legge scan</a>
+                <a id="chineseSourceLink" class="source-button secondary" href="https://ctext.org/book-of-changes/yi-jing" target="_blank" rel="noreferrer">Open Chinese Text Project comparison</a>
+              </article>
+            </div>
+
+            <article class="journal-note">
+              <label for="personalNotes">Personal notes</label>
+              <textarea id="personalNotes" rows="4" placeholder="What stands out? What feels true, difficult, or worth returning to?"></textarea>
+            </article>
 
             <details class="method-notes">
               <summary>How this cast was made</summary>
               <p>Each line uses three simulated coins. Heads count as 3 and tails as 2. Totals of 6 and 9 are changing lines.</p>
               <ol id="coinDetails"></ol>
             </details>
+            <button id="newReading" class="quiet-button new-reading-button" type="button">Cast a new reading</button>
           </section>
         </section>
 
@@ -89,7 +139,7 @@
           <div class="page-heading">
             <p class="section-label">Saved readings</p>
             <h1>Journal</h1>
-            <p>Your readings stay on this device.</p>
+            <p>Your readings and personal notes stay on this device.</p>
           </div>
           <div id="journalList" class="journal-list"></div>
         </section>
@@ -97,15 +147,17 @@
         <section id="aboutView" class="view">
           <div class="page-heading">
             <p class="section-label">Sources and approach</p>
-            <h1>About this oracle</h1>
+            <h1>About Recovery Cottage</h1>
           </div>
           <div class="about-copy">
-            <p>The I Ching, or Book of Changes, is an ancient Chinese work used for reflection on change, timing, and conduct.</p>
-            <p>This app uses the traditional King Wen sequence, hexagram structure, and three-coin casting method. Its short reflections are original app text rather than a claim to replace a full translation.</p>
+            <p>The I Ching, or Book of Changes, is an ancient Chinese work used for reflection on change, timing, relationship, and conduct.</p>
+            <p><strong>Recovery Cottage</strong> is an original interpretive rendering inspired by the traditional King Wen sequence, the ancient Chinese text, and James Legge’s public-domain translation. It is not presented as a philological or official translation.</p>
+            <p>The Recovery Cottage reflections bring the oracle into conversation with recovery, grief, boundaries, accountability, patience, repair, and the slow work of becoming more whole.</p>
             <h2>Public-domain foundation</h2>
-            <p>For deeper reading, consult James Legge’s 1882 English translation and the original Chinese text. Both are public domain in the United States.</p>
+            <p>James Legge’s 1882 English translation and the original Chinese text are public domain in the United States. Modern translations and commentary remain the work of their authors and are not copied here.</p>
             <a href="https://www.gutenberg.org/ebooks/25501" target="_blank" rel="noreferrer">Project Gutenberg: Chinese Yi Jing</a>
             <a href="https://commons.wikimedia.org/wiki/File:The_Sacred_Books_Of_The_East_%28IA_sacredbooksofthe015784mbp%29.pdf" target="_blank" rel="noreferrer">James Legge scan: Sacred Books of the East</a>
+            <a href="https://ctext.org/book-of-changes/yi-jing" target="_blank" rel="noreferrer">Chinese Text Project: Chinese and Legge comparison</a>
             <h2>A note on use</h2>
             <p>Treat a reading as a perspective to consider. For health, legal, financial, or safety decisions, seek qualified advice and use your own judgment.</p>
           </div>
