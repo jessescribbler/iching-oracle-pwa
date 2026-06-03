@@ -7,7 +7,7 @@ An installable, offline-capable I Ching oracle and private reading journal.
 - Six-step, bottom-up three-coin casting flow
 - Primary and relating hexagrams with standard moving-line notation
 - Distinct Recovery Cottage recovery themes and reflections for all 64 hexagrams
-- Source-grounded plain-language moving-line lenses
+- Source-grounded Recovery Cottage moving-line lenses
 - In-app James Legge judgments, Images, and changing-line text
 - Separate public-domain source links for Legge and the Chinese text
 - Shareable casts using `?lines=` URLs without sharing private questions or notes
