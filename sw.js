@@ -1,10 +1,10 @@
-const CACHE = "recovery-cottage-v3";
+const CACHE = "recovery-cottage-v4";
 const ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./legge.js",
-  "./app.js",
+  "./legge.js?v=3",
+  "./app.js?v=3",
   "./manifest.webmanifest",
   "./assets/icon.svg",
   "./assets/icon-192.png",
@@ -24,7 +24,20 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          const copy = response.clone();
+          caches.open(CACHE).then((cache) => cache.put("./index.html", copy));
+          return response;
+        })
+        .catch(() => caches.match("./index.html"))
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request).catch(() => caches.match("./index.html")))
+    caches.match(event.request).then((cached) => cached || fetch(event.request))
   );
 });
